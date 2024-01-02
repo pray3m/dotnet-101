@@ -51,4 +51,50 @@ public class DbOperations
             Console.WriteLine($"Error inserting data: {ex.Message}");
         }
     }
+
+    public void UpdateData()
+    {
+        Console.WriteLine("Enter the id of the student you want to update : ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Enter the new name: ");
+        string newName = Console.ReadLine();
+
+        try
+        {
+            string updateDataQuery = "UPDATE Student SET Name=@newName WHERE Id=@id";
+
+            MySqlCommand cmd = new MySqlCommand(updateDataQuery, _connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@newName", newName);
+            cmd.ExecuteNonQuery();
+
+            Console.WriteLine("Data updated successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error updating data : {ex.Message} ");
+        }
+    }
+
+    public void DeleteData()
+    {
+        Console.WriteLine("Enter the id of the student you want to delete: ");
+        int id = Convert.ToInt32(Console.ReadLine());
+
+        try
+        {
+            string deleteDataQuery = "DELETE FROM Student WHERE id=@id";
+
+            MySqlCommand cmd = new MySqlCommand(deleteDataQuery, _connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+
+            Console.WriteLine("Data deleted successfully!");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting : {ex.Message}");
+        }
+    }
 }

@@ -15,7 +15,10 @@ class ConsoleApp
             // Create an instance of DbOperations and use it to create a table and insert data
             DbOperations dbOperations = new DbOperations(conn);
             dbOperations.CreateTable();
-            dbOperations.InsertData();
+            // dbOperations.InsertData();
+            // dbOperations.UpdateData();
+            dbOperations.DeleteData();
+
         }
         catch (Exception ex)
         {
