@@ -9,5 +9,7 @@
 // Inheritance
 // MultipleInheritance.Main();
 
+MethodOverriding.Main();
+
 // Console app with db
-ConsoleApp.Main();
+// ConsoleApp.Main();
